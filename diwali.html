@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function launchConfetti() {
+        const duration = 7 * 1000; // 10 seconds
+        const end = Date.now() + duration;
+        const colors = ['#ffeb3b', '#8F00FF', '#ff5722', '#4caf50', '#FFFFFF',"#000000"];
+        (function frame() {
+            confetti({
+                particleCount: 6, // Reduced number of particles
+                startVelocity: 80,
+                spread: 450,
+                ticks: 190,
+                origin: { x: 0.5, y: 0.5 }, // Start from top center
+                colors: colors,
+            });
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        }());
+    }
+    window.onload = function() {
+        launchConfetti();
+    }
+    </script>  
+</body>
+</html>
